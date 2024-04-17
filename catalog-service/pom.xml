@@ -88,8 +88,7 @@
 		<!-- integeration test -->
 		<dependency>
 			<groupId>io.rest-assured</groupId>
-			<artifactId>rest-assured-bom</artifactId>
-			<version>5.3.2</version>
+			<artifactId>rest-assured</artifactId>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
