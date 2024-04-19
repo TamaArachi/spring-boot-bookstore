@@ -15,6 +15,8 @@
 	<description>Catalog Service for Book Store using Spring Boot</description>
 	<properties>
 		<java.version>21</java.version>
+		<spotless.version>${spotless-maven-plugin.version}</spotless.version>
+		<spotless-maven-plugin.version>2.43.0</spotless-maven-plugin.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -114,6 +116,29 @@
 				<configuration>
 					<failOnNoGitDirectory>false</failOnNoGitDirectory>
 				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>com.diffplug.spotless</groupId>
+				<artifactId>spotless-maven-plugin</artifactId>
+				<version>${spotless-maven-plugin.version}</version>
+				<configuration>
+					<java>
+						<importOrder />
+						<removeUnusedImports />
+						<palantirJavaFormat>
+							<version>2.35.0</version>
+						</palantirJavaFormat>
+						<formatAnnotations />
+					</java>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>compile</phase>
+						<goals>
+							<goal>check</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
