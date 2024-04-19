@@ -1,17 +1,14 @@
 package com.mona.catalogservice.web.exception;
 
 import com.mona.catalogservice.exception.ProductNotFoundException;
+import java.net.URI;
+import java.time.Instant;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ProblemDetail;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import java.net.URI;
-import java.time.Instant;
-
-//Global Exception Handler class for catalog service which uses ProblemDetail
+// Global Exception Handler class for catalog service which uses ProblemDetail
 // to gain finer control of the error response
 @RestControllerAdvice
 public class GlobalExceptionHandler {
@@ -42,5 +39,4 @@ public class GlobalExceptionHandler {
         problemDetail.setProperty("timestamp", Instant.now());
         return problemDetail;
     }
-
 }

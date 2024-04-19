@@ -7,8 +7,6 @@ import com.mona.catalogservice.exception.ProductNotFoundException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Optional;
-
 @RestController
 @RequestMapping("/api/products")
 class ProductController {
@@ -28,7 +26,8 @@ class ProductController {
 
     @GetMapping("/{code}")
     ResponseEntity<Product> getProductsByCode(@PathVariable String code) {
-        return productService.getProductsByCode(code)
+        return productService
+                .getProductsByCode(code)
                 .map(ResponseEntity::ok)
                 .orElseThrow(() -> ProductNotFoundException.forCode(code));
     }

@@ -1,15 +1,13 @@
 package com.mona.catalogservice.domain;
 
 import com.mona.catalogservice.ApplicationProperties;
+import java.util.Optional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import javax.swing.text.html.Option;
-import java.util.Optional;
 
 @Service
 @Transactional
@@ -31,9 +29,7 @@ public class ProductService {
         pageNo = pageNo <= 1 ? 0 : pageNo - 1;
         Pageable pageable = PageRequest.of(pageNo, applicationProperties.pageSize(), sort);
         // mapping product entity fields to abstracted version of product
-        Page<Product> productsPage = productRepository
-                .findAll(pageable)
-                .map(ProductMapper::toProduct);
+        Page<Product> productsPage = productRepository.findAll(pageable).map(ProductMapper::toProduct);
         return new PagedResult<>(
                 productsPage.getContent(),
                 productsPage.getTotalElements(),
