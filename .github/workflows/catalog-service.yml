@@ -36,7 +36,7 @@ jobs:
         with:
             username: ${{ secrets.DOCKERHUB_USERNAME }}
             password: ${{ secrets.DOCKERHUB_TOKEN }}
-      - if: github.ref} == 'refs/head/main'
+      - if: github.ref == 'refs/head/main'
         name: Build and Push Docker Image
         run:
           ./mvw spring-boot:build-image -DskipTests
